@@ -29,10 +29,17 @@ public class Program {
 		for(Seller obj : sellerList) {
 			System.out.println(obj);
 		}
+		
 		System.out.println("----- TEST 4: seller insert -------");
-		Seller newSeller = new Seller(null, "Maju", "majulinda@bbb.com", new Date(), 8000.0, dep);
+		Seller newSeller = new Seller(null, "Teste", "teste@testing.com", new Date(), 8000.0, dep);
 		sellerDao.insert(newSeller);
 		System.out.println("Inserted! new id = " + newSeller.getId());
+		
+		System.out.println("----- TEST 5: seller update -------");
+		seller = sellerDao.findByID(1);
+		seller.setName("NewName");
+		sellerDao.update(seller);
+		System.out.println("Update completed");
 	}
 
 }
