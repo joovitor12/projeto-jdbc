@@ -56,12 +56,11 @@ public class DepartmentDaoJDBC implements DepartmentDAO{
 		PreparedStatement st = null;
 
 		try {
-			st = conn.prepareStatement("UPDATE seller "
-					+ "SET Id = ?, Name = ?, " + "WHERE Id = ? ",
+			st = conn.prepareStatement("UPDATE department "
+					+ "SET Name = ? " + "WHERE Id = ? ",
 					Statement.RETURN_GENERATED_KEYS);
-			st.setInt(1, obj.getId());
-			st.setString(2, obj.getName());
-			st.setInt(3, obj.getId() );
+			st.setString(1, obj.getName());
+			st.setInt(2, obj.getId() );
 			st.executeUpdate();
 			
 		} catch (SQLException e) {
