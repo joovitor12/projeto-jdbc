@@ -21,41 +21,32 @@ public class Program2 {
 		System.out.println(department);
 		
 		
-		/*System.out.println("----- TEST 2: seller findByDepartment -----");
-		Department dep = new Department(2, "");
-		List<Seller> sellerList = sellerDao.findByDepartment(dep);
-		for(Seller obj : sellerList) {
-			System.out.println(obj);
-		}
-		*/
-		
-		
-		System.out.println("----- TEST 3: seller findAll -------");
+		System.out.println("----- TEST 2: department findAll -------");
 		List<Department> depList = depDao.findAll();
 		for(Department obj : depList) {
 			System.out.println(obj);
 		}
 		
 		/*
-		System.out.println("----- TEST 4: department insert -------");
+		System.out.println("----- TEST 3: department insert -------");
 		Department newDepartment = new Department(19, "HQs");
 		depDao.insert(newDepartment);
 		System.out.println("Inserted! new id = " + newDepartment.getId());
 		*/
 		
-		System.out.println("----- TEST 5: department update -------");
+		System.out.println("----- TEST 4: department update -------");
 		department.setName("Swords");
 		depDao.update(department);
 		System.out.println("Update completed");
 		
 		
-		/*
-		System.out.println("----- TEST 6: seller delete -------");
+		
+		System.out.println("----- TEST 5: department delete -------");
 		int id = in.nextInt();
-		sellerDao.deleteByID(id);
+		depDao.deleteByID(id);
 		System.out.println(id + " has been deleted!");
 		in.close();
-		*/
+		
 	}
 
 }
