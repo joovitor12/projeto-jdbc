@@ -15,11 +15,11 @@ public class Program2 {
 		Scanner in = new Scanner(System.in);
 		SellerDAO sellerDao = DaoFactory.createSellerDAO();
 		DepartmentDAO depDao = DaoFactory.createDepartmentDAO();
-		/*
-		System.out.println("----- TEST 1: seller findById -----");
-		Seller seller = sellerDao.findByID(2);
-		System.out.println(seller);
-		*/
+		
+		System.out.println("----- TEST 1: department findById -----");
+		Department department = depDao.findByID(12);
+		System.out.println(department);
+		
 		
 		/*System.out.println("----- TEST 2: seller findByDepartment -----");
 		Department dep = new Department(2, "");
@@ -38,7 +38,7 @@ public class Program2 {
 		*/
 		
 		System.out.println("----- TEST 4: department insert -------");
-		Department newDepartment = new Department(12, "HQs");
+		Department newDepartment = new Department(13, "HQs");
 		depDao.insert(newDepartment);
 		System.out.println("Inserted! new id = " + newDepartment.getId());
 		/*

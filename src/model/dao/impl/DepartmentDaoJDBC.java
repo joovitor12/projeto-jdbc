@@ -11,6 +11,7 @@ import db.DB;
 import db.DbException;
 import model.dao.DepartmentDAO;
 import model.entities.Department;
+import model.entities.Seller;
 
 public class DepartmentDaoJDBC implements DepartmentDAO{
 	
@@ -52,7 +53,23 @@ public class DepartmentDaoJDBC implements DepartmentDAO{
 
 	@Override
 	public void update(Department obj) {
-		// TODO Auto-generated method stub
+		PreparedStatement st = null;
+
+		try {
+			st = conn.prepareStatement("UPDATE seller "
+					+ "SET Id = ?, Name = ?, " + "WHERE Id = ? ",
+					Statement.RETURN_GENERATED_KEYS);
+			st.setInt(1, obj.getId());
+			st.setString(2, obj.getName());
+			st.setInt(3, obj.getId() );
+			st.executeUpdate();
+			
+		} catch (SQLException e) {
+			throw new DbException(e.getMessage());
+		} finally {
+			DB.closeStatements(st);
+
+		}
 		
 	}
 
@@ -64,14 +81,40 @@ public class DepartmentDaoJDBC implements DepartmentDAO{
 
 	@Override
 	public Department findByID(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		PreparedStatement st = null;
+		ResultSet rs = null;
+		try {
+			st = conn.prepareStatement(
+					"SELECT * from department where id = ?");
+			st.setInt(1, id);
+			rs = st.executeQuery();
+			if (rs.next()) {
+				Department dep = instantiateDepartment(rs);
+				return dep;
+			}
+			return null;
+
+		} catch (SQLException e) {
+			throw new DbException(e.getMessage());
+		} finally {
+			DB.closeStatements(st);
+			DB.closeResultSets(rs);
+		}
+
 	}
 
 	@Override
 	public List<Department> findAll() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+
+	private Department instantiateDepartment(ResultSet rs) throws SQLException {
+		Department dep = new Department();
+		dep.setId(rs.getInt("Id"));
+		dep.setName(rs.getString("Name"));
+		return dep;
 	}
 
 }
