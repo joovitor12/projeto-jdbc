@@ -11,7 +11,7 @@
 
 Esse conjunto de exemplos foi desenvolvido com as seguintes tecnologias:
 
-- [Java](https://reactjs.org)
+- [Java](https://www.java.com/pt-BR/)
 - [MySQL](https://www.mysql.com/)
 - [JDBC](https://dev.mysql.com/downloads/connector/j/?os=26)
 
